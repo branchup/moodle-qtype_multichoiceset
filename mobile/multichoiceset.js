@@ -43,11 +43,11 @@ var result = {
         var divs = answeroptions.querySelectorAll('div[class^=r]'); // Only get the answer options divs (class="r0...").
         divs.forEach(function(d, i) {
             // Each answer option contains all the data for presentation, it just needs extracting.
-            var label = d.querySelector('label').innerHTML;
-            var name = d.querySelector('label').getAttribute('for');
+            var label = d.querySelector('[data-region=answer-label]').innerHTML;
+            var name = d.querySelector('input').getAttribute('name');
             var checked = (d.querySelector('input[type=checkbox]').getAttribute('checked') ? true : false);
             var disabled = (d.querySelector('input').getAttribute('disabled') === 'disabled' ? true : false);
-            var feedback = (d.querySelector('div') ? d.querySelector('div').innerHTML : '');
+            var feedback = (d.querySelector('.core-question-feedback-container') ? d.querySelector('.core-question-feedback-container').innerHTML : '');
             var qclass = d.getAttribute('class');
             options.push({text: label, name: name, checked: checked, disabled: disabled, feedback: feedback, qclass: qclass});
         });
